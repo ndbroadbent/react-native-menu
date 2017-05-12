@@ -155,7 +155,7 @@ module.exports = (React, ReactNative, { constants, model, styles }) => {
       const { w: menuWidth, px: menuPX, py: menuPY } = menuMeasurements;
       const { w: ownWidth, px: ownPX, py: ownPY } = this._ownMeasurements;
       const optionsTop = menuPY - ownPY;
-      const optionsRight = ownWidth + ownPX - menuPX - menuWidth;
+      const optionsRight = ownWidth + ownPX - menuPX - menuWidth + 30;
       return makeOptions(options, { top: optionsTop, right: optionsRight });
     },
 
