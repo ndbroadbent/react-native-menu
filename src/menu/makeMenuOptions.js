@@ -10,8 +10,8 @@ module.exports = (React, ReactNative, { styles }) => {
       return (
         <TouchableWithoutFeedback style={[styles.options, this.props.style]}>
           <View>
-            { React.Children.map(this.props.children, (x) => (
-              React.cloneElement(x, {onPress: this.onSelect})
+            { React.Children.map(this.props.children, (el) => (
+              el && React.cloneElement(el, {onPress: this.onSelect})
             )) }
           </View>
         </TouchableWithoutFeedback>
