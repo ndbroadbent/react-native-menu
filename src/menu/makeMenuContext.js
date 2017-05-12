@@ -4,7 +4,6 @@ let nextID = 1;
 
 module.exports = (React, ReactNative, { constants, model, styles }) => {
   const {
-    NativeModules: { UIManager },
     TouchableWithoutFeedback,
     ScrollView,
     View
@@ -56,8 +55,7 @@ module.exports = (React, ReactNative, { constants, model, styles }) => {
       return this.state.openedMenu
     },
     openMenu(name) {
-      const handle = ReactNative.findNodeHandle(this._menus[name].ref);
-      UIManager.measure(handle, (x, y, w, h, px, py) => {
+      this._menus[name].ref.measure((x, y, w, h, px, py) => {
         this._menus[name].measurements = { x, y, w, h, px, py };
 
         this.setState({
@@ -119,8 +117,7 @@ module.exports = (React, ReactNative, { constants, model, styles }) => {
       this.onLayout = once(this.onLayout);
     },
     onLayout() {
-      const handle = ReactNative.findNodeHandle(this.refs.Container);
-      UIManager.measure(handle, (x, y, w, h, px, py) => {
+      this.refs.Container.measure((x, y, w, h, px, py) => {
         this._ownMeasurements = {x, y, w, h, px, py};
       });
     },
